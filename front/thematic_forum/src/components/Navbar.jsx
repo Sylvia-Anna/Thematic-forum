@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import CssBaseline from '@mui/material/CssBaseline';
 import { makeStyles } from '@mui/styles';
-import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 
 
 const pages = ['Products', 'Pricing', 'Blog'];
@@ -23,7 +23,6 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const useStyles = makeStyles(theme => ({
     navbar: {
       borderRadius: '5px',
-      backgroundColor: 'red',
     },
   }));
 
@@ -48,6 +47,11 @@ function Navbar() {
 
   const classes = useStyles();
 
+  const linkStyle = {
+    textDecoration: 'none',
+    color: 'white',
+  };
+
   return (
         <AppBar position="static" className={classes.navbar}>
         <Container maxWidth="xl">
@@ -57,7 +61,7 @@ function Navbar() {
                 variant="h6"
                 noWrap
                 component="a"
-                href="#app-bar-with-responsive-menu"
+                href=""
                 sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
@@ -138,10 +142,15 @@ function Navbar() {
                 ))}
             </Box>
 
-            <Box sx={{ flexGrow: 0 }}>
+            <Box sx={{ flexGrow: 0, display: 'flex', gap: 2 }}>
                 <Button
                     sx={{ my: 2, color: 'white', display: 'block' }}>
-                    Login
+                    <Link to='/signin' style={linkStyle}>Sign in</Link>
+                </Button>
+
+                <Button variant="outlined" color='primary'
+                    sx={{ my: 2, color: 'white', display: 'block' }}>
+                    <Link to='/signup' style={linkStyle}>Sign up</Link>
                 </Button>
             </Box>
             </Toolbar>
